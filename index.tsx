@@ -12,26 +12,31 @@ type Props = {
 
 const Component: React.ComponentType<Props> = ({ className, items }: Props) => (
   <div className={className}>
-    {items.map(({ id, name }) => (
-      <Wrapper
-        key={id}
-        popup={
-          <ButtonGroup>
-            <button>{name}</button>
-            <button>{name}</button>
-          </ButtonGroup>
-        }
-      >
-        {(ref, onMouseEnter, onMouseLeave) => (
-          <TableRow
-            ref={ref}
-            name={name}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          />
-        )}
-      </Wrapper>
-    ))}
+    <table>
+      <thead />
+      <tbody>
+        {items.map(({ id, name }) => (
+          <Wrapper
+            key={id}
+            popup={
+              <ButtonGroup>
+                <button>{name}</button>
+                <button>{name}</button>
+              </ButtonGroup>
+            }
+          >
+            {(ref, onMouseEnter, onMouseLeave) => (
+              <TableRow
+                ref={ref}
+                name={name}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+              />
+            )}
+          </Wrapper>
+        ))}
+      </tbody>
+    </table>
   </div>
 );
 
